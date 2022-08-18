@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>RESTAURANT BILL</title>
+<script type="text/javascript">
+function total()
+{
+var s=document.getElementById("starters");
+var m=document.getElementById("main");
+var d=document.getElementById("desserts");
+<u>var items="item\t\t\tprice\n";</u>
+var totalcost=0;
+for(var i=0;i<s.options.length;i++)
+{
+var option=s.options[i];
+if(option.selected==true)
+{
+var price=parseInt(option.value);
+totalcost=totalcost+price;
+items=items+option.text+"\t\t"+price+"\n";
+}
+}
+for(var i=0;i<m.options.length;i++)
+{
+ var option=m.options[i];
+ if(option.selected==true)
+  {
+    var price=parseInt(option.value);
+    totalcost=totalcost+price;
+    items=items+option.text+"\t\t\t"+price+"\n";
+  }
+}
+for(var i=0;i<d.options.length;i++)
+{
+ var option=d.options[i];
+ if(option.selected==true)
+  {
+    var price=parseInt(option.value);
+    totalcost=totalcost+price;
+    items=items+option.text+"\t\t\t"+price+"\n";
+  }
+}
+items=items+"\n\ntotal cost\t\t"+totalcost;
+document.getElementById("order").value=items;
+}
+</script>
+</head>
+<body>
+<form name ="form1">
+<table border="5">
+<tr><th colspan="2" align="center"><h2>restaurant menu details</h2></th>
+</tr>
+<tr>
+<td>STARTERS</td>
+<td><select id="starters" size="3" multiple="multiple">
+<option value="100">french fries</option>
+<option value="150">potato wedges</option>
+<option value="200">cheese nuggets</option>
+<option value="250">fries platter</option>
+</td>
+</tr>
+</select>
+<tr>
+<td>main course</td>
+<td><select id="main" size="3" multiple="multiple">
+<option value="110">roti</option>
+<option value="150">kulcha</option>
+<option value="200">biriyani</option>
+<option value="250">rice</option>
+</td>
+</tr>
+</select>
+<tr>
+<td>Desserts</td>
+<td><select id="desserts" size="3">
+<option value="150">cake</option>
+<option value="100">gud bud</option>
+<option value="200">death by chocolate</option>
+<option value="250">juice</option>
+</td>
+</tr>
+</select>
+<tr>
+<td colspan="2" align="center">
+<textarea id="order" rows="10" cols="40">
+</textarea>
+</td>
+</tr>
+<tr>
+<td><input type="button" value="TOTAL" onclick="total()"/></td>
+<td><input type="reset" value="CLEAR"/></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
